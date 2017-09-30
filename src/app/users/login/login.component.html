@@ -1,0 +1,55 @@
+<h2>Login</h2>
+
+<form
+    #loginForm="ngForm"
+    (submit)="login()"
+>
+    <md-form-field class="example-full-width">
+        <input
+            #email="ngModel"
+            type="email"
+            mdInput
+            placeholder="E-mail"
+            name="email"
+            [(ngModel)]="user.email"
+            required
+        >
+        <md-hint [hidden]="email.pristine || email.valid">
+            <span [hidden]="!email.errors?.required">Email address is required.</span>
+        </md-hint>
+    </md-form-field>
+    <br>
+    <md-form-field class="example-full-width">
+        <input
+            #password="ngModel"
+            type="password"
+            mdInput
+            placeholder="Password"
+            name="password"
+            [(ngModel)]="user.password"
+            required
+        >
+        <md-hint [hidden]="password.pristine || password.valid">
+            <span [hidden]="!password.errors?.required">Password is required.</span>
+        </md-hint>
+    </md-form-field>
+    <br>
+
+
+    <a
+        md-raised-button
+        color="warn"
+    >
+        CANCEL
+    </a>
+
+    <button
+        md-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!loginForm.form.valid"
+    >
+        ADD
+    </button>
+
+</form>
