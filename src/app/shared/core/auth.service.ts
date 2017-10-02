@@ -33,6 +33,4 @@ export class AuthService {
   getToken() {
     return window.localStorage.getItem('token');
   }
-
-
 }
