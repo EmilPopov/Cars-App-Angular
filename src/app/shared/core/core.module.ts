@@ -5,9 +5,11 @@ import { RouterModule } from "@angular/router";
 import { NgMaterialModule } from "./ng-material.module";
 // components
 import { NavbarComponent } from '../navbar/navbar.component';
+import { MessageHandlerComponent } from '../message-handler/message-handler.component';
+
 // services
 import { HttpService } from "./http.service";
-import { MessageHandlerComponent } from '../message-handler/message-handler.component';
+import { AuthService } from "./auth.service";
 
 @NgModule({
   imports: [
@@ -16,7 +18,7 @@ import { MessageHandlerComponent } from '../message-handler/message-handler.comp
     RouterModule,
     NgMaterialModule
   ],
-  providers: [HttpService],
+  providers: [HttpService, AuthService],
   declarations: [NavbarComponent, MessageHandlerComponent],
   exports: [
     NgMaterialModule,

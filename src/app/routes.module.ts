@@ -2,15 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
 import { RegisterComponent } from "./users/register/register.component";
+import { LoginComponent } from "./users/login/login.component";
 
 const routes: Routes = [
-  // { path:'', component:  },  
+
   { path: 'users/register', component: RegisterComponent },
-  // { path: 'githubprofile', component: ProfileComponent },
-  // { path: 'cars', component: CarsComponent },
-  // { path: 'cars/add-car', component: CarFormComponent },
-  // { path: 'cars/:id', component: CarDetailsComponent }
-  // { path:'**', component: AppComponent }
+  { path: 'users/login', component: LoginComponent },
+
 ]
 
 @NgModule({
@@ -20,4 +18,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class carRoutesModule { }
+export class appRoutesModule { }

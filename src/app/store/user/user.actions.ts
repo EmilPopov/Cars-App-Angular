@@ -4,7 +4,8 @@ import { IAppState } from '..'
 import { UserService } from "../../users/user.service";
 
 export const USER_REGISTERED = 'user/REGISTER';
-export const USER_LOGED = 'user/LOGED';
+export const USER_LOGGED = 'user/LOGGED';
+export const USER_LOGOUT = 'user/LOGOUT';
 
 @Injectable()
 export class UserActions {
@@ -22,6 +23,26 @@ export class UserActions {
                 })
             }
             )
+    }
+
+    login(user) {
+        this.userService
+            .login(user)
+            .subscribe(result => {
+                this.ngRedux.dispatch({
+                    type: USER_LOGGED,
+                    result
+                })
+            })
+    }
+
+
+    logout() {
+
+        this.ngRedux.dispatch({
+            type: USER_LOGOUT
+        })
+
     }
 
 

@@ -10,4 +10,8 @@ export class UserService {
     return this.httpService.post('auth/signup', user)
   }
 
+  login(user) {
+    return this.httpService.post('auth/login', user)
+  }
+
 }
