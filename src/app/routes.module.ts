@@ -2,12 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
 import { RegisterComponent } from "./users/register/register.component";
+import { AppComponent } from "./app.component";
 import { LoginComponent } from "./users/login/login.component";
+import { AddCarComponent } from "./cars/add-car/add-car.component";
+import { PrivateRoute } from "./shared/core/private-route";
+
 
 const routes: Routes = [
-
+  // { path: '**', component: AppComponent },
   { path: 'users/register', component: RegisterComponent },
   { path: 'users/login', component: LoginComponent },
+  {
+    path: 'cars/add',
+    component: AddCarComponent,
+    canActivate: [PrivateRoute]
+  }
 
 ]
 

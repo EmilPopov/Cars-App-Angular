@@ -6,11 +6,13 @@ import { IAppState, store } from "./store";
 
 import { appRoutesModule } from "./routes.module";
 import { UsersModule } from "./users/users.module";
+import { CarsModule } from "./cars/cars.module";
 //components
 import { AppComponent } from './app.component';
 // services
 import { AuthService } from "./shared/core/auth.service";
 import { config } from "./shared/core/config";
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { config } from "./shared/core/config";
     NgReduxModule,
     appRoutesModule,
     CoreModule,
-    UsersModule
+    UsersModule,
+    CarsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
