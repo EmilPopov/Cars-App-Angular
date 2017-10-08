@@ -7,11 +7,13 @@ import { IAppState, store } from "./store";
 import { appRoutesModule } from "./routes.module";
 import { UsersModule } from "./users/users.module";
 import { CarsModule } from "./cars/cars.module";
+import { StatsModule } from "./stats/stats.module";
 //components
 import { AppComponent } from './app.component';
 // services
 import { AuthService } from "./shared/core/auth.service";
 import { config } from "./shared/core/config";
+
 
 
 
@@ -25,7 +27,8 @@ import { config } from "./shared/core/config";
     appRoutesModule,
     CoreModule,
     UsersModule,
-    CarsModule
+    CarsModule,
+    StatsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

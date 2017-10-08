@@ -5,6 +5,7 @@ import { RegisterComponent } from "./users/register/register.component";
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./users/login/login.component";
 import { AddCarComponent } from "./cars/add-car/add-car.component";
+import { StatsComponent } from "./stats/stats.component";
 import { PrivateRoute } from "./shared/core/private-route";
 
 
@@ -15,6 +16,11 @@ const routes: Routes = [
   {
     path: 'cars/add',
     component: AddCarComponent,
+    canActivate: [PrivateRoute]
+  },
+  {
+    path: 'stats',
+    component: StatsComponent,
     canActivate: [PrivateRoute]
   }
 

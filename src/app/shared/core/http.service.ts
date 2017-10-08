@@ -10,6 +10,11 @@ export class HttpService {
 
   constructor(private http: Http) { }
 
+  get(url) {
+    return this.http.get(`${baseUrl}${url}`)
+      .map(res => res.json());
+  }
+
   post(url, data) {
     const headers = new Headers({
       'Content-Type': 'application/json'
@@ -18,7 +23,6 @@ export class HttpService {
     const requestOptions = new RequestOptions({
       headers: headers
     })
-
 
     return this.http.post(`${baseUrl}${url}`, JSON.stringify(data), requestOptions)
       .map(res => res.json());

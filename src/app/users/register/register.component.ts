@@ -26,9 +26,9 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.userActions.register(this.user);
+
     this.ngRedux.select(state => state.user.userRegistered)
       .subscribe(userRegistered => {
-        console.log(`userRegistered => ${userRegistered}`);
         if (userRegistered) {
           this.router.navigateByUrl('users/login')
         }
