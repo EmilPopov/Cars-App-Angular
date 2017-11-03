@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { StatsModel } from "./statistics.model";
-import { StatsService } from "./stats.service";
 import { StatsActions } from "../store/stats/stats.actions";
 import { NgReduxModule, NgRedux } from "ng2-redux";
 import { IAppState } from "../store/app-state";

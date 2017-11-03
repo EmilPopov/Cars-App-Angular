@@ -1,1 +1,143 @@
-<h1>Add Car</h1>
+<form
+    (ngSubmit)="addCar()"
+    class="example-form"
+    #carForm="ngForm"
+>
+
+    <input
+        placeholder="Make"
+        name="make"
+        [(ngModel)]="car.make"
+        required
+    >
+
+    <input
+        placeholder="Model"
+        name="model"
+        [(ngModel)]="car.model"
+        required
+    >
+    <br>
+
+    <input
+        placeholder="Year"
+        name="year"
+        [(ngModel)]="car.year"
+        required
+    >
+    <br>
+
+    <input
+        placeholder="Image"
+        name="image"
+        [(ngModel)]="car.image"
+        required
+    >
+    <br>
+
+    <input
+        placeholder="Price"
+        name="price"
+        [(ngModel)]="car.price"
+        required
+    >
+    <br>
+
+    <input
+        placeholder="Engine"
+        name="engine"
+        [(ngModel)]="car.engine"
+        required
+    >
+    <br>
+
+    <!-- <md-form-field class="example-full-width">
+        <input
+            mdInput
+            placeholder="Model"
+            name="model"
+            [(ngModel)]="car.model"
+            value
+            required
+        >
+    </md-form-field>
+    <br>
+    <md-form-field class="example-full-width">
+        <input
+            mdInput
+            placeholder="Year"
+            name="year"
+            [(ngModel)]="car.year"
+            value
+            required
+        >
+    </md-form-field>
+    <br>
+    <md-form-field class="example-full-width">
+        <input
+            mdInput
+            placeholder="Image"
+            name="image"
+            [(ngModel)]="car.image"
+            value
+            required
+        >
+    </md-form-field>
+    <br>
+    <md-form-field class="example-full-width">
+        <input
+            mdInput
+            placeholder="Price"
+            name="price"
+            [(ngModel)]="car.price"
+            value
+            required
+        >
+    </md-form-field>
+    <br>
+    <md-select
+        placeholder="Engine"
+        name="engine"
+        [(ngModel)]="car.engine"
+        required
+    >
+        <md-option
+            *ngFor="let engine of engines"
+            [value]="engine"
+        >
+            {{ engine }}
+        </md-option>
+    </md-select>
+    <br> -->
+
+    <a
+        md-raised-button
+        color="warn"
+        (click)="resetCar()"
+    >
+        CANCEL
+    </a>
+
+    <button
+        md-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!carForm.form.valid"
+    >
+        ADD
+    </button>
+
+</form>
+<!-- <div class="preview">
+    <div class="label">MAKE</div>
+    <div>{{car.make}}</div>
+    <div class="label">IMAGE</div>
+    <img
+        [src]="car.image"
+        alt
+    >
+    <div class="label">PRICE</div>
+    <div>{{car.price}}</div>
+    <div class="label">ENGINE</div>
+    <div>{{car.engine}}</div>
+</div> -->
