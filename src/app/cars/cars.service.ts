@@ -10,8 +10,13 @@ export class CarsService {
     return this.httpService.post('cars/create/', car, true);
   }
 
-  allCars(page = 1) {
-    return this.httpService.get(`cars/all?page=${page}`)
+  allCars(page = 1, searchText = null) {
+    let url = `cars/all?page=${page}`;
+    if (searchText) {
+      url += `&search=${searchText}`
+    }
+
+    return this.httpService.get(url);
   }
 
 }

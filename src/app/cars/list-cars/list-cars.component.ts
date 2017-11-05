@@ -12,8 +12,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class ListCarsComponent implements OnInit {
 
-  page = 1;
+  page: number = 1;
   cars: CarModel[];
+  searchText: string;
 
   constructor(
     private carsActions: CarsActions,
@@ -22,18 +23,17 @@ export class ListCarsComponent implements OnInit {
     private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
-
     this.route.queryParams
       .subscribe(params => {
         this.page = +params['page'] || 1
-        this.listCars(this.page)
+        this.searchText = params['search'] || ''
 
-        console.log(this.page);
+        this.listCars(this.page, this.searchText);
       })
   }
 
-  listCars(page) {
-    this.carsActions.listCars(page);
+  listCars(page, searchText) {
+    this.carsActions.listCars(page, searchText);
 
     this.ngRedux
       .select(state => state.cars)
@@ -49,16 +49,29 @@ export class ListCarsComponent implements OnInit {
       return;
     }
 
-    this.router.navigateByUrl(`cars?page=${this.page - 1}`);
+    const url = this.getUrl(this.page - 1)
+    this.router.navigateByUrl(url);
   }
 
   nextPage() {
     if (this.cars.length === 0 || this.cars.length < 10) {
       return;
     }
+    const url = this.getUrl(this.page + 1)
+    this.router.navigateByUrl(url);
+  }
 
-    this.router.navigateByUrl(`cars?page=${this.page + 1}`);
+  search() {
+    this.router.navigateByUrl(`cars?search=${this.searchText}`)
+  }
 
+  private getUrl(page) {
+    let url = `cars?page=${page}`
+    if (this.searchText) {
+      url += `&search=${this.searchText}`
+    }
+
+    return url;
   }
 
 }
