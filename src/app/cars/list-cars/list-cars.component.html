@@ -1,0 +1,29 @@
+<div *ngIf="cars">
+    <div *ngIf="cars.length === 0">No more cars available</div>
+
+    <ul>
+        <li *ngFor="let car of cars">
+            <a routerLink="/cars/details/{{car.id}}">
+                <h3>{{car.make}}</h3>
+                <span>{{car.model}}</span>
+                <img
+                    [src]="car.image"
+                    alt="{{car.model}}"
+                    title="{{car.model}}"
+                >
+            </a>
+        </li>
+    </ul>
+    <button
+        [disabled]="page === 1"
+        (click)="prevPage()"
+    >
+        PREV
+    </button>
+    <button
+        [disabled]="cars.length === 0 || cars.length < 10"
+        (click)="nextPage()"
+    >
+        NEXT
+    </button>
+</div>

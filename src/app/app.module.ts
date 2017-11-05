@@ -22,9 +22,9 @@ import { config } from "./shared/core/config";
     AppComponent
   ],
   imports: [
+    appRoutesModule,
     BrowserModule,
     NgReduxModule,
-    appRoutesModule,
     CoreModule,
     UsersModule,
     CarsModule,

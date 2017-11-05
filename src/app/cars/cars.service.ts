@@ -10,4 +10,8 @@ export class CarsService {
     return this.httpService.post('cars/create/', car, true);
   }
 
+  allCars(page = 1) {
+    return this.httpService.get(`cars/all?page=${page}`)
+  }
+
 }

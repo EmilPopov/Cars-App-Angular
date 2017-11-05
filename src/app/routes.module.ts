@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 import { LoginComponent } from "./users/login/login.component";
 import { AddCarComponent } from "./cars/add-car/add-car.component";
 import { StatsComponent } from "./stats/stats.component";
+import { ListCarsComponent } from "./cars/list-cars/list-cars.component";
 import { PrivateRoute } from "./shared/core/private-route";
 
 
@@ -13,6 +14,10 @@ const routes: Routes = [
   // { path: '**', component: AppComponent },
   { path: 'users/register', component: RegisterComponent },
   { path: 'users/login', component: LoginComponent },
+  {
+    path: 'cars',
+    component: ListCarsComponent
+  },
   {
     path: 'cars/add',
     component: AddCarComponent,
@@ -23,6 +28,7 @@ const routes: Routes = [
     component: StatsComponent,
     canActivate: [PrivateRoute]
   }
+
 
 ]
 
