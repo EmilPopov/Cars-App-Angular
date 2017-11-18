@@ -21,16 +21,19 @@
             </a>
         </li>
     </ul>
-    <button
-        [disabled]="page === 1"
-        (click)="prevPage()"
-    >
-        PREV
-    </button>
-    <button
-        [disabled]="cars.length === 0 || cars.length < 10"
-        (click)="nextPage()"
-    >
-        NEXT
-    </button>
+    <br>
+    <div>
+        <button
+            [disabled]="page === 1"
+            (click)="prevPage()"
+        >
+            PREV
+        </button>
+        <button
+            [disabled]="cars.length === 0 || cars.length < 10"
+            (click)="nextPage()"
+        >
+            NEXT
+        </button>
+    </div>
 </div>

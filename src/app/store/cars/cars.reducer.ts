@@ -1,5 +1,5 @@
 import { initialState } from "./cars.state";
-import { ADD_CAR, LIST_CARS } from "./cars.actions";
+import { ADD_CAR, LIST_CARS, CAR_DETAILS } from "./cars.actions";
 
 
 function addCar(state, action) {
@@ -18,6 +18,13 @@ function listCars(state, action) {
     })
 }
 
+function carDetails(state, action) {
+    const result = action.result;
+    return Object.assign({}, state, {
+        carDetails: result
+    })
+}
+
 export function CarsReducer(state = initialState, action) {
 
     switch (action.type) {
@@ -25,6 +32,8 @@ export function CarsReducer(state = initialState, action) {
             return addCar(state, action);
         case LIST_CARS:
             return listCars(state, action);
+        case CAR_DETAILS:
+            return carDetails(state, action);
 
         default:
             return state;

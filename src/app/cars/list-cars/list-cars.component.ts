@@ -39,8 +39,6 @@ export class ListCarsComponent implements OnInit {
       .select(state => state.cars)
       .subscribe(cars => {
         this.cars = cars.allCars;
-
-        console.log(this.cars);
       });
   }
 

@@ -1,0 +1,14 @@
+<h1>CAR DETAILS</h1>
+
+<div>
+    <div>ID: {{car.id}}</div>
+    <div>MAKE: {{car.make}}</div>
+    <img
+        *ngIf="car.image"
+        [src]="car.image"
+    >
+    <div>MODEL: {{car.model}}</div>
+    <div>YEAR: {{car.year}}</div>
+    <div>ENGINE: {{car.engine}}</div>
+    <div>PRICE: {{car.price}}</div>
+</div>

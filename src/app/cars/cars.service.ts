@@ -19,4 +19,9 @@ export class CarsService {
     return this.httpService.get(url);
   }
 
+  details(id) {
+    let url = `cars/details/${id}`
+    return this.httpService.get(url, true);
+  }
+
 }

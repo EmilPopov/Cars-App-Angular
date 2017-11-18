@@ -7,6 +7,7 @@ import { CarsService } from "../../cars/cars.service";
 
 export const ADD_CAR = 'cars/ADD_CAR';
 export const LIST_CARS = 'cars/LIST_CARS';
+export const CAR_DETAILS = 'cars/CAR_DETAILS'
 
 @Injectable()
 export class CarsActions {
@@ -31,6 +32,17 @@ export class CarsActions {
             .subscribe(result => {
                 this.ngRedux.dispatch({
                     type: LIST_CARS,
+                    result
+                })
+            })
+    }
+
+    carDetails(id) {
+        this.carsService
+            .details(id)
+            .subscribe(result => {
+                this.ngRedux.dispatch({
+                    type: CAR_DETAILS,
                     result
                 })
             })
