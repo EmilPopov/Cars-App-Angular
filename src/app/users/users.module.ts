@@ -9,6 +9,7 @@ import { UserService } from "./user.service";
 //redux
 import { UserActions } from "../store/user/user.actions";
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './src/app/users/profile/profile.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { LoginComponent } from './login/login.component';
   ],
   declarations: [
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   providers: [
     UserService,

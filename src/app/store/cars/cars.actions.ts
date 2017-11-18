@@ -10,6 +10,7 @@ export const LIST_CARS = 'cars/LIST_CARS';
 export const CAR_DETAILS = 'cars/CAR_DETAILS';
 export const LIKE_CAR = 'cars/LIKE_CAR';
 export const SEND_REVIEW = 'cars/SEND_REVIEW';
+export const GET_REVIEWS = 'cars/GET_REVIEWS';
 
 @Injectable()
 export class CarsActions {
@@ -63,10 +64,21 @@ export class CarsActions {
 
     sendReview(id, review){
         this.carsService
-        .sendReview(id, review)
+        .addReview(id, review)
         .subscribe(result => {
             this.ngRedux.dispatch({
                 type:SEND_REVIEW,
+                result
+            })
+        })
+    }
+
+    getReviews(id){
+        this.carsService
+        .getReviews(id)
+        .subscribe(result => {
+            this.ngRedux.dispatch({
+                type:GET_REVIEWS,
                 result
             })
         })

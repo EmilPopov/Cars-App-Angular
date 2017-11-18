@@ -12,6 +12,23 @@
     <div>LIKES: {{car.likes}}</div>
 </div>
 
+<h3>Reviews</h3>
+<div>
+    <div *ngFor="let review of reviews">
+        <div>
+            Rating - {{review.rating}}
+        </div> 
+        <div *ngIf="review.comment">
+                Comment - {{review.comment}} 
+        </div>
+       <div> 
+           User - {{review.user}} 
+        </div>
+        <hr>
+        <hr>
+    </div>
+</div>
+<h3>Add Review</h3>
 <form (ngSubmit)="sendReview()" class="example-form" #reviewForm="ngForm">
     <select placeholder="Rating" name="rating"  [(ngModel)]="review.rating">
         <option *ngFor="let number of [1,2,3,4,5]" [value]="number" >{{number}}</option>

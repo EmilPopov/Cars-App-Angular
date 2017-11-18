@@ -5,6 +5,7 @@ import { NgRedux } from "ng2-redux/lib";
 import { IAppState } from "../../store/app-state";
 import { CarDetailsModel } from "../car-details.model";
 import { CarReviewModel } from '../car-review.model';
+import { log } from 'util';
 // import { CarReviewModel } from "../car-review.model";
 
 
@@ -14,9 +15,9 @@ import { CarReviewModel } from '../car-review.model';
   styleUrls: ['./car-details.component.css']
 })
 export class CarDetailsComponent implements OnInit {
-
+  
   review: CarReviewModel;
-  isReviewSend:boolean;
+  reviews;
   car: CarDetailsModel;
 
   constructor(
@@ -31,28 +32,33 @@ export class CarDetailsComponent implements OnInit {
       .subscribe(params => {
         const id = params['id']
 
-        this.carsActions.carDetails(id)
+        this.carsActions.carDetails(id);
+        this.carsActions.getReviews(id);
+        
 
         this.ngRedux
           .select(state => state.cars)
-          .subscribe(cars => this.car = cars.carDetails);
+          .subscribe(cars => {
+            this.car = cars.carDetails;
+            this.reviews = cars.allReviews;
+          });
+
+
       })
 
-      this.review = new CarReviewModel(3);
+    this.review = new CarReviewModel(3);
   }
 
-  like(){
-     this.carsActions.likeCar(this.car.id);
+  like() {
+    this.carsActions.likeCar(this.car.id);
 
-     this.ngRedux
-     .select(state => state.cars)
-     .subscribe(cars => this.car = cars.carDetails)
+    this.ngRedux
+      .select(state => state.cars)
+      .subscribe(cars => this.car = cars.carDetails)
   }
 
-  sendReview(){
+  sendReview() {
     this.carsActions.sendReview(this.car.id, this.review)
-
-    this.ngRedux.select(state => state.cars).subscribe(cars => this.isReviewSend = cars.isReviewSend)
   }
 
 }

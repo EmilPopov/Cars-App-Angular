@@ -28,9 +28,14 @@ export class CarsService {
     return this.httpService.post(`cars/details/${id}/like`, {}, true);
   }
 
-  sendReview(id, review){
+  addReview(id, review){
     return this.httpService.post(`cars/details/${id}/reviews/create`, review, true);
   }
+
+  getReviews(id){
+    return this.httpService.get(`cars/details/${id}/reviews`, true);
+  }
+  
 
 
 }
