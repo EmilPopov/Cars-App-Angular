@@ -24,4 +24,13 @@ export class CarsService {
     return this.httpService.get(url, true);
   }
 
+  like(id){
+    return this.httpService.post(`cars/details/${id}/like`, {}, true);
+  }
+
+  sendReview(id, review){
+    return this.httpService.post(`cars/details/${id}/reviews/create`, review, true);
+  }
+
+
 }

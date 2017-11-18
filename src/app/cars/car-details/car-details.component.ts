@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { CarsActions } from "../../store/cars/cars.actions";
 import { NgRedux } from "ng2-redux/lib";
 import { IAppState } from "../../store/app-state";
-import { CarModel } from "../car.model";
+import { CarDetailsModel } from "../car-details.model";
+import { CarReviewModel } from '../car-review.model';
+// import { CarReviewModel } from "../car-review.model";
 
 
 @Component({
@@ -13,7 +15,9 @@ import { CarModel } from "../car.model";
 })
 export class CarDetailsComponent implements OnInit {
 
-  car: CarModel;
+  review: CarReviewModel;
+  isReviewSend:boolean;
+  car: CarDetailsModel;
 
   constructor(
     private carsActions: CarsActions,
@@ -33,6 +37,22 @@ export class CarDetailsComponent implements OnInit {
           .select(state => state.cars)
           .subscribe(cars => this.car = cars.carDetails);
       })
+
+      this.review = new CarReviewModel(3);
+  }
+
+  like(){
+     this.carsActions.likeCar(this.car.id);
+
+     this.ngRedux
+     .select(state => state.cars)
+     .subscribe(cars => this.car = cars.carDetails)
+  }
+
+  sendReview(){
+    this.carsActions.sendReview(this.car.id, this.review)
+
+    this.ngRedux.select(state => state.cars).subscribe(cars => this.isReviewSend = cars.isReviewSend)
   }
 
 }

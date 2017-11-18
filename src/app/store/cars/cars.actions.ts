@@ -7,7 +7,9 @@ import { CarsService } from "../../cars/cars.service";
 
 export const ADD_CAR = 'cars/ADD_CAR';
 export const LIST_CARS = 'cars/LIST_CARS';
-export const CAR_DETAILS = 'cars/CAR_DETAILS'
+export const CAR_DETAILS = 'cars/CAR_DETAILS';
+export const LIKE_CAR = 'cars/LIKE_CAR';
+export const SEND_REVIEW = 'cars/SEND_REVIEW';
 
 @Injectable()
 export class CarsActions {
@@ -47,5 +49,28 @@ export class CarsActions {
                 })
             })
     }
+
+    likeCar(id){
+        this.carsService
+        .like(id)
+        .subscribe(result => {
+            this.ngRedux.dispatch({
+                type:LIKE_CAR,
+                result
+            })
+        })
+    }
+
+    sendReview(id, review){
+        this.carsService
+        .sendReview(id, review)
+        .subscribe(result => {
+            this.ngRedux.dispatch({
+                type:SEND_REVIEW,
+                result
+            })
+        })
+    }
+
 
 }

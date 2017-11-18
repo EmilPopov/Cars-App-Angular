@@ -3,12 +3,22 @@
 <div>
     <div>ID: {{car.id}}</div>
     <div>MAKE: {{car.make}}</div>
-    <img
-        *ngIf="car.image"
-        [src]="car.image"
-    >
+    <img *ngIf="car.image" [src]="car.image">
+    <button (click)="like()">Like</button>
     <div>MODEL: {{car.model}}</div>
     <div>YEAR: {{car.year}}</div>
     <div>ENGINE: {{car.engine}}</div>
     <div>PRICE: {{car.price}}</div>
+    <div>LIKES: {{car.likes}}</div>
 </div>
+
+<form (ngSubmit)="sendReview()" class="example-form" #reviewForm="ngForm">
+    <select placeholder="Rating" name="rating"  [(ngModel)]="review.rating">
+        <option *ngFor="let number of [1,2,3,4,5]" [value]="number" >{{number}}</option>
+    </select><br/>
+    <textarea placeholder="Comment" name="comment" cols="30" rows="10" [(ngModel)]="review.comment"></textarea><br/>
+    <button md-raised-button color="primary" type="submit" [disabled]="!reviewForm.form.valid">
+        SEND
+    </button>
+
+</form>

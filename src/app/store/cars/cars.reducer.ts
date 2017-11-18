@@ -1,5 +1,5 @@
 import { initialState } from "./cars.state";
-import { ADD_CAR, LIST_CARS, CAR_DETAILS } from "./cars.actions";
+import { ADD_CAR, LIST_CARS, CAR_DETAILS, LIKE_CAR, SEND_REVIEW } from "./cars.actions";
 
 
 function addCar(state, action) {
@@ -25,6 +25,36 @@ function carDetails(state, action) {
     })
 }
 
+function likeCar(state, action) {
+    if (action.result.success) {
+        const currentCarLikes = state.carDetails.likes;
+        const carDetails = Object.assign({}, state.carDetails, {
+            likes: currentCarLikes + 1
+        })
+
+        return Object.assign({}, state, {
+            carDetails
+        })
+    }
+
+    return state;
+}
+
+function sendReview(state, action) {
+    const result = action.result;
+    
+    if (result.success) {
+        const carReviews = state.carReviews
+        const review = result.review
+        return Object.assign({}, state, {
+            carReviews: [...carReviews, review]
+        }) 
+    }
+
+    return state;
+}
+
+
 export function CarsReducer(state = initialState, action) {
 
     switch (action.type) {
@@ -34,6 +64,8 @@ export function CarsReducer(state = initialState, action) {
             return listCars(state, action);
         case CAR_DETAILS:
             return carDetails(state, action);
+        case SEND_REVIEW:
+            return sendReview(state, action);
 
         default:
             return state;
