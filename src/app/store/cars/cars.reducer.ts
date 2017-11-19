@@ -1,5 +1,7 @@
 import { initialState } from "./cars.state";
-import { ADD_CAR, LIST_CARS, CAR_DETAILS, LIKE_CAR, SEND_REVIEW, GET_REVIEWS } from "./cars.actions";
+import { ADD_CAR, 
+    LIST_CARS, 
+    CAR_DETAILS, CAR_DELETE, LIKE_CAR, SEND_REVIEW, GET_REVIEWS, USER_CARS } from "./cars.actions";
 
 
 function addCar(state, action) {
@@ -63,6 +65,33 @@ function getReviews(state, action) {
 
 }
 
+function getUserCars(state, action){
+    const result = action.result;
+    return Object.assign({}, state, {
+        userCars: result
+    })
+
+}
+
+function deleteCar(state, action){
+    const result = action.result;
+    
+    if (result.success) {
+        const id = action.id
+        const carIndex = state.userCars.findIndex(c => c.id === id);
+     
+        if (carIndex >= 0) {
+            const userCars = state.userCars.slice(0)
+            userCars.splice(carIndex, 1);
+            return Object.assign({}, state, {
+                userCars
+            })
+        }
+    }
+
+    return state;
+}
+
 
 export function CarsReducer(state = initialState, action) {
 
@@ -77,6 +106,10 @@ export function CarsReducer(state = initialState, action) {
             return sendReview(state, action);
         case GET_REVIEWS:
             return getReviews(state, action);
+        case USER_CARS:
+            return getUserCars(state, action);
+        case CAR_DELETE:
+            return deleteCar(state, action);    
 
         default:
             return state;

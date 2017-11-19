@@ -36,13 +36,12 @@ export class AddCarComponent implements OnInit {
 
     this.carsActions.addCar(this.car)
 
-    this.ngRedux
+    let subscription = this.ngRedux
       .select(state => state.cars)
       .subscribe(cars => {
-
         const carId = cars.carAddedId
-
         if (cars.carAdded) {
+          subscription.unsubscribe();
           this.router.navigateByUrl(`/cars/details/${carId}`)
         }
       });

@@ -7,7 +7,8 @@ export interface ICarsState {
     allCars: CarModel[];
     carDetails: CarDetailsModel[];
     carReviews:[{}];
-    allReviews:[{}]
+    allReviews:[{}],
+    userCars:[object]
 }
 
 export const initialState: ICarsState = {
@@ -16,5 +17,6 @@ export const initialState: ICarsState = {
     allCars: [],
     carDetails: [],
     carReviews:[{}],
-    allReviews:[{}]
+    allReviews:[{}],
+    userCars:[{}]
 }

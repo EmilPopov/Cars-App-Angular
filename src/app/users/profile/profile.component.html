@@ -1,3 +1,12 @@
-<p>
-  profile works!
-</p>
+<h3>User Profile</h3>
+<div>
+    <div *ngFor="let car of cars">
+        <div>
+            MAKE - {{car.make}}
+        </div> 
+       
+      <button (click)="deleteCar(car.id)">DELETE</button>
+        <hr>
+        <hr>
+    </div>
+</div>
